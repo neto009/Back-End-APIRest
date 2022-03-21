@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.domain.TodoList;
+import com.example.demo.domain.TodoListItem;
 import com.example.demo.repository.TodoListItemRespository;
 import com.example.demo.repository.TodoListRepository;
 
