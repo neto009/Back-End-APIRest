@@ -36,7 +36,7 @@ public class TodoListController {
 
     @GetMapping("/{id}")
     public ResponseEntity<TodoList> buscaUmRegistro(@PathVariable Integer id) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.busca(id).orElseThrow(() -> new PessoaNaoEncontradaException(id)));
+        return ResponseEntity.status(HttpStatus.OK).body(service.busca(id).orElseThrow(() -> new TodoListNaoEncontradoException(id)));
     }
 
     @PutMapping("/{id}")

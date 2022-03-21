@@ -3,11 +3,15 @@ package com.example.demo.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import lombok.Data;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.util.List;
 
 
+@Data
 @Entity
 public class TodoList {
     
