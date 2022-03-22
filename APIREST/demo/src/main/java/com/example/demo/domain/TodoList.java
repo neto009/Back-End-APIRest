@@ -5,18 +5,20 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.util.List;
 
 
-@Data
+@Data 
+@NoArgsConstructor
 @Entity
 public class TodoList {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
 

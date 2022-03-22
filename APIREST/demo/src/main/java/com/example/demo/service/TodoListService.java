@@ -3,7 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.controller.TodoListNaoEncontradoException;
+//import com.example.demo.controller.TodoListNaoEncontradoException;
 import com.example.demo.domain.TodoList;
 import com.example.demo.repository.TodoListRepository;
 
@@ -15,31 +15,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class TodoListService {
     
     @Autowired
-    TodoListRepository repository;
+    private TodoListRepository repository;
 
-    public List<TodoList> todos() {
-        return (List<TodoList>) repository.findAll();
+    public List<TodoList> GetAll() {
+        return repository.findAll();
     }
 
-    public TodoList novo(TodoList todolist) {
-        return repository.save(todolist);
+    public TodoList create(TodoList todoList) {
+        return repository.save(todoList);
     }
 
-    public Optional<TodoList> busca(Integer id) {
+    public Optional<TodoList> GetById(Integer id) {
         return repository.findById(id);
     }
 
-    public TodoList atualiza(TodoList todolist, Integer id) {
+    public TodoList update(TodoList todoList, Integer id) {
 
         if(repository.existsById(id)){
-        todolist.setId(id);
-        return repository.save(todolist);
+            todoList.setId(id);
+            return repository.save(todoList);
         }
 
-        throw new TodoListNaoEncontradoException(id);
+        return null;
     }
 
-    public void exclui(@PathVariable Integer id) {
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }
