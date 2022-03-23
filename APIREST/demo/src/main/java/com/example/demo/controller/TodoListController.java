@@ -41,13 +41,13 @@ public class TodoListController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @PostMapping
     public ResponseEntity<TodoList> create(@RequestBody TodoList todolist) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.create(todolist));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<TodoList> getById(@PathVariable Integer id) {
         Optional<TodoList> existingItemOptional = service.GetById(id);
 
@@ -58,7 +58,7 @@ public class TodoListController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<TodoList> update(@RequestBody TodoList item, @PathVariable Integer id) {
 
         TodoList todoList = service.update(item, id);
@@ -71,7 +71,7 @@ public class TodoListController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
