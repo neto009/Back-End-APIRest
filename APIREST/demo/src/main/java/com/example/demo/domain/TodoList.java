@@ -27,8 +27,4 @@ public class TodoList {
 
     public TodoList(Object object, String string) {
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

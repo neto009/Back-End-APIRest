@@ -6,6 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 @Entity
 public class TodoListItem {
     
@@ -17,36 +22,9 @@ public class TodoListItem {
     @ManyToOne
     private TodoList todolist;
 
-    public TodoListItem() {
-    }
-
     public TodoListItem(Integer id, String nomeDoItem, TodoList todolist) {
         this.id = id;
         this.nomeDoItem = nomeDoItem;
-        this.todolist = todolist;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNomeDoItem() {
-        return this.nomeDoItem;
-    }
-
-    public void setNomeDoItem(String nomeDoItem) {
-        this.nomeDoItem = nomeDoItem;
-    }
-
-    public TodoList getTodolist() {
-        return this.todolist;
-    }
-
-    public void setTodolist(TodoList todolist) {
         this.todolist = todolist;
     }
 
@@ -58,5 +36,4 @@ public class TodoListItem {
             ", todolist='" + getTodolist() + "'" +
             "}";
     }
-
 }
