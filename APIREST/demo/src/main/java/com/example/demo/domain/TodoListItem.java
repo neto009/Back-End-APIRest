@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,20 +22,6 @@ public class TodoListItem {
     private String nomeDoItem;
 
     @ManyToOne
-    private TodoList todolist;
-
-    public TodoListItem(Integer id, String nomeDoItem, TodoList todolist) {
-        this.id = id;
-        this.nomeDoItem = nomeDoItem;
-        this.todolist = todolist;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", nomeDoItem='" + getNomeDoItem() + "'" +
-            ", todolist='" + getTodolist() + "'" +
-            "}";
-    }
+    @JsonBackReference
+    private TodoList todoList;
 }
