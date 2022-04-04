@@ -6,6 +6,8 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,10 +28,11 @@ public class TodoList {
     private Integer id;
     private String nome;
 
-    @OneToMany(mappedBy = "todolist")
+    @OneToMany(mappedBy = "todoList")
     @JsonManagedReference
     private List<TodoListItem> todolistitem = new ArrayList<TodoListItem>();
 
     public TodoList(Object object, String string) {
     }
+
 }

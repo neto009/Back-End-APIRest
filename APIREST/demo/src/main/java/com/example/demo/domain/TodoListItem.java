@@ -24,4 +24,5 @@ public class TodoListItem {
     @ManyToOne
     @JsonBackReference
     private TodoList todoList;
+
 }
