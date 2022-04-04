@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/todolist")
@@ -73,7 +74,12 @@ public class TodoListController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable Integer id) {
-        service.delete(id);
+
+        try {
+            service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "ID não encontrado", e);
+        }
     }
 }
