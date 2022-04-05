@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,11 @@ public class TodoListNaoEncontradaAdvice {
 
         @ExceptionHandler
         public ResponseEntity<String> createFormatError(HttpMediaTypeNotSupportedException ex) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Formato de aquivo invalido!");
+                return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body("Formato de aquivo invalido!");
+        }
+
+        @ExceptionHandler
+        public ResponseEntity<String> searchFormatError(MethodArgumentTypeMismatchException ex) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error na requisição!");
         }
 }
