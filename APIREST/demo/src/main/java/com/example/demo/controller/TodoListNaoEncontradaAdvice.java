@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 //import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 @RestControllerAdvice
 public class TodoListNaoEncontradaAdvice {
         @ResponseBody
-        @ExceptionHandler(TodoListNaoEncontradoException.class)
+        @ExceptionHandler
         @ResponseStatus(HttpStatus.NOT_FOUND)
         String peopleNotFoundHandler(TodoListNaoEncontradoException ex) {
                 return ex.getMessage();
@@ -24,4 +25,8 @@ public class TodoListNaoEncontradaAdvice {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não encontrado!");
         }
 
+        @ExceptionHandler
+        public ResponseEntity<String> createFormatError(HttpMediaTypeNotSupportedException ex) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Formato de aquivo invalido!");
+        }
 }
